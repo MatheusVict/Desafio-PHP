@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         <h1>Cadastro de usuário</h1>
-        <form action="?page=salvar" method="POST">
+        <form action="?page=salvar" method="POST" onsubmit="return validarCPF(event)">
             <input type="hidden" name="acao" value="cadastrar">
             <div class="mb-3">
                 <label>Nome*</label>
@@ -17,7 +17,7 @@
             </div>
             <div class="mb-3">
                 <label>cpf*</label>
-                <input type="text" name="cpf" class="form-control" required>
+                <input type="text" name="cpf" id="cpf" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label>número de telefone*</label>
@@ -54,6 +54,20 @@
             <div class="mb-3">
                 <input type="submit" value="Criar" class="btn btn-primary">
             </div>
+            <script>
+                function validarCPF(event) {
+                let value = document.getElementById("cpf").value;
+                let re = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/g;
+                if (! re.test(value)) {
+                    // campo inválido, retorna false para o formulário não ser submetido
+                    alert('CPF Inválido');
+                    event.preventDefault()
+                    document.form.cpf.focus();
+                    return false;
+                }
+                return true;
+                }
+            </script>
         </form>
     </div>
 </div>
