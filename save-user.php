@@ -13,7 +13,7 @@
             $district = $_POST["district"];
             $city = $_POST["city"];
             $state = $_POST["state"];
-            
+
             $sql = "INSERT INTO users (
             name, 
             password, 
@@ -45,7 +45,43 @@
             break;
         
         case 'editar':
-            # code...
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $password = md5($_POST["password"]);
+            $cpf = $_POST["cpf"];
+            $phonenumber = $_POST["phonenumber"];
+            $cep = $_POST["cep"];
+            $address = $_POST["address"];
+            $number = $_POST["number"];
+            $complement = $_POST["complement"];
+            $district = $_POST["district"];
+            $city = $_POST["city"];
+            $state = $_POST["state"];
+
+            $sql = "UPDATE users SET
+            name='{$name}', 
+            email='{$email}', 
+            password='{$password}', 
+            cpf='{$cpf}', 
+            phonenumber='{$phonenumber}', 
+            cep='{$cep}', 
+            address='{$address}', 
+            number='{$number}', 
+            complement='{$complement}', 
+            district='{$district}', 
+            city='{$city}', 
+            state='{$state}' WHERE id=".$_REQUEST["id"];
+
+            $res = $conn->query($sql);
+
+            if(!$res) {
+                print "<script>alert('Erro ao atualizar')</script>";
+                print "<script>location.href='?page=listar'</script>";
+                return;
+            } 
+
+            print "<script>alert('Atualizado com sucesso')</script>";
+            print "<script>location.href='?page=listar'</script>";
             break;
 
         case 'excluir':

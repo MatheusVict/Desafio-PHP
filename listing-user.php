@@ -19,7 +19,7 @@
             print "<td>".$row->name."</td>";
             print "<td>".$row->email."</td>";
             print "<td>
-                    <button class='btn btn-success'>Editar</button>
+                    <button onclick=\"location.href='?page=editar&id=".$row->id."'\" class='btn btn-success'>Editar</button>
                     <button class='btn btn-danger'>excluir</button>
                    </td>";
             print "</tr>";
