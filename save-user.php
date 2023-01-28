@@ -13,6 +13,7 @@
             $district = $_POST["district"];
             $city = $_POST["city"];
             $state = $_POST["state"];
+            
             $sql = "INSERT INTO users (
             name, 
             password, 
