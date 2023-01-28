@@ -97,4 +97,20 @@
             print "<script>alert('Deletado com sucesso')</script>";
             print "<script>location.href='?page=listar'</script>";
             break;
+        case 'logar':
+            $email = $_POST["email"];
+            $pass = $_POST["password"];
+
+           $sql = "SELECT * FROM users WHERE email='$email'";
+           $res = $conn->query($sql);
+           $row = $res->fetch_object();
+
+           if(md5($pass) != $row->password) {
+            print "<script>alert('Email ou senha invvalida')</script>";
+            print "<script>location.href='?page=login'</script>";
+           } else {
+            print "<script>alert('Bem vindo')</script>";
+            print "<script>location.href='?page=listar'</script>";
+           }
+            break;
     }
