@@ -85,6 +85,16 @@
             break;
 
         case 'excluir':
-            # code...
+            $sql = "DELETE FROM users WHERE id=".$_REQUEST["id"];
+            $res = $conn->query($sql);
+
+            if(!$res) {
+                print "<script>alert('Erro ao deletar')</script>";
+                print "<script>location.href='?page=listar'</script>";
+                return;
+            } 
+
+            print "<script>alert('Deletado com sucesso')</script>";
+            print "<script>location.href='?page=listar'</script>";
             break;
     }
