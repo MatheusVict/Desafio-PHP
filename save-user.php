@@ -3,7 +3,7 @@
         case 'cadastrar':
             $name = $_POST["name"];
             $email = $_POST["email"];
-            $password = md5($_POST["password"]);
+            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
             $cpf = $_POST["cpf"];
             $phonenumber = $_POST["phonenumber"];
             $cep = $_POST["cep"];
@@ -47,7 +47,7 @@
         case 'editar':
             $name = $_POST["name"];
             $email = $_POST["email"];
-            $password = md5($_POST["password"]);
+            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
             $cpf = $_POST["cpf"];
             $phonenumber = $_POST["phonenumber"];
             $cep = $_POST["cep"];
@@ -105,8 +105,8 @@
            $res = $conn->query($sql);
            $row = $res->fetch_object();
 
-           if(md5($pass) != $row->password) {
-            print "<script>alert('Email ou senha invvalida')</script>";
+           if(!password_verify($pass, $row->password)) {
+            print "<script>alert('Email ou senha invalida')</script>";
             print "<script>location.href='?page=login'</script>";
            } else {
             print "<script>alert('Bem vindo')</script>";

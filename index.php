@@ -54,7 +54,7 @@
                         include("login-user.php");
                     break;
                         default:
-                    print "Bem vidndos";
+                    print "<h1>Bem vindo ao CRUD de usuários</h1>";
                 }
     ?>
             </div>
