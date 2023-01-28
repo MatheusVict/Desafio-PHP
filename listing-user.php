@@ -19,6 +19,7 @@
             print "<td>".$row->name."</td>";
             print "<td>".$row->email."</td>";
             print "<td>
+                    <button onclick=\"location.href='?page=ver&id=".$row->id."'\" class='btn btn-primary'>Ver</button>
                     <button onclick=\"location.href='?page=editar&id=".$row->id."'\" class='btn btn-success'>Editar</button>
                     <button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='?page=salvar&acao=excluir&id=".$row->id."'}else{false}\" class='btn btn-danger'>excluir</button>
                    </td>";

@@ -46,6 +46,9 @@
                     case "editar":
                         include("edit-user.php");
                     break;
+                    case "ver":
+                        include("show-user.php");
+                    break;
                         default:
                     print "Bem vidndos";
                 }
